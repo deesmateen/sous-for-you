@@ -1,0 +1,9 @@
+@import "../../../styles";
+
+.navbarContainer {
+  height: 3rem;
+  background: $weaveBlue;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
