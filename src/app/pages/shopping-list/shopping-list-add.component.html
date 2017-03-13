@@ -1,0 +1,30 @@
+<div>
+  <div>
+    <form [formGroup]="shoppingListForm" (ngSubmit)="onShoppingListSubmit()">
+      <div>
+
+        <h5>Ingredients</h5>
+        <div formArrayName="shoppingList" class="shoppingList">
+          <div class="form-group" *ngFor="let ingredient of shoppingListForm.controls['shoppingList'].controls; let i = index">
+            <input
+              type="text"
+              placeholder="Ingredient"
+              formControlName="{{i}}">
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="Amount">
+          </div>
+        </div>
+
+        <button class="btn btn-success" (click)="addNewIngredient()" *ngIf="isAdd" [disabled]="!shoppingListForm.valid">Add</button>
+        <button class="btn btn-success" *ngIf="!isAdd" [disabled]="!shoppingListForm.valid" >Save</button>
+        <button class="btn btn-danger" (click)="deleteNewIngredient()" *ngIf="!isAdd">Delete</button>
+        <button class="btn btn-warning" (click)="clearNewIngredient()" *ngIf="!isAdd">Clear</button>
+
+
+      </div>
+    </form>
+  </div>
+</div>

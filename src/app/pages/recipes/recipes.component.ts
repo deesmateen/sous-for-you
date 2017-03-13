@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { HttpService } from "../../shared/services/http.service";
+
+import { Recipe } from './recipe';
 
 @Component({
   selector: 'app-recipes',
@@ -8,27 +10,30 @@ import { HttpService } from "../../shared/services/http.service";
 })
 export class RecipesComponent implements OnInit {
 
-  recipes = [];
+  recipes: string;
+
+  selectedRecipe: Recipe;
 
   constructor(
     private httpService: HttpService
   ) { }
 
   ngOnInit() {
-    this.getRecipe();
+    // this.newRecipe();
   }
 
 
-  getRecipe() {
-    this.httpService.getData()
+  newRecipe() {
+    this.httpService.getRecipe()
       .subscribe(
         (data: any) => {
-          console.log('New Data', data.recipes[0]);
-          this.recipes = data.recipes[0];
+          console.log('New Data', data);
+          this.recipes = data;
         },
         error => {
           console.log('Error:: Cannot Get Recipe', error);
         }
       )
   }
+
 }

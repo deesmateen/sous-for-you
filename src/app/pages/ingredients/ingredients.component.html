@@ -1,6 +1,8 @@
 <div class="ingredientsContainer">
-  <input type="text" placeholder="Ingredient 1">
+  <input type="text" placeholder="Ingredient 1" [ngModel]="ingredient">
   <input type="text" placeholder="Ingredient 2">
   <input type="text" placeholder="Ingredient 3">
+<button class="btn btn-success" (click)="getIngredients(ingredient)">Submit</button>
 </div>
-<button class="btn btn-success">Submit</button>
+
+<div>{{ingredient.title}}</div>

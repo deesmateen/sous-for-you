@@ -1,3 +1,29 @@
-<div class="recipesContainer" >
-  <h5>{{recipes.creditText}}</h5>
+<div>
+  <div class="recipesContainer">
+
+    <div>
+      <recipes-list (recipeSelected)="selectedRecipe = $event"></recipes-list>
+    </div>
+
+    <div>
+      <div>
+        <h3>Recipe List</h3>
+        <!--<app-recipes ></app-recipes>-->
+      </div>
+      <div>
+        <h3>Recipe Detail</h3>
+        <recipe-detail [selectedRecipe]="selectedRecipe "></recipe-detail>
+      </div>
+    </div>
+  </div>
 </div>
+
+    <!--<input type="text" name="new-recipe" id="new-recipe" [(ngModel)]="new_recipe">-->
+    <!--<button class="btn btn-success" name="recipe-name" (click)="newRecipe(new_recipe)">Save</button>-->
+    <!--<ul>-->
+
+      <!--<li *ngFor="let recipe of recipes">-->
+      <!--{{recipe.title}}-->
+      <!--</li>-->
+
+    <!--</ul>-->

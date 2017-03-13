@@ -1,7 +1,9 @@
 @import "../../../styles";
 
-.recipesContainer {
-  padding: 50px;
+.shoppingList {
   display: flex;
   justify-content: space-around;
+  max-width: 600px;
+  width:100%;
+
 }

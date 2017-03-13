@@ -1,10 +1,22 @@
 <div class="navbarContainer">
-  <div>
+  <div class="navbarLeft">
     <a routerLinkActive="active" [routerLink]="['homepage']">Home</a>
-    <a routerLinkActive="active" [routerLink]="['login']">Login</a>
-    <a routerLinkActive="active" [routerLink]="['logout']">Logout</a>
-    <a routerLinkActive="active" [routerLink]="['profile']">Profile</a>
-    <a routerLinkActive="active" [routerLink]="['recipes']">Recipes</a>
-    <a routerLinkActive="active" [routerLink]="['ingredients']">Ingredients</a>
+    <a routerLinkActive="active" [routerLink]="['profile']" *ngIf="isAuth()">Profile</a>
+    <a routerLinkActive="active" [routerLink]="['recipes']" *ngIf="isAuth()">Recipes</a>
+    <a routerLinkActive="active" [routerLink]="['ingredients']" *ngIf="isAuth()">Ingredients</a>
+    <a routerLinkActive="active" [routerLink]="['shopping-list']" *ngIf="isAuth()">Shopping List</a>
+    <a routerLinkActive="active" [routerLink]="['random-meal']" *ngIf="isAuth()">Random Meal</a>
+  </div>
+  <div class="title">
+    <h1>Sous For You</h1>
+  </div>
+  <div class="navbarRight">
+    <div *ngIf="!isAuth()">
+      <a routerLinkActive="active" [routerLink]="['signup']">Sign Up</a>
+      <a routerLinkActive="active" [routerLink]="['login']">Login</a>
+    </div>
+    <div *ngIf="isAuth()">
+      <a [routerLink]="['login']" (click)="onLogOut()" class="logout">Logout</a>
+    </div>
   </div>
 </div>

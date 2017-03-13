@@ -16,7 +16,7 @@ export class IngredientsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIngredients();
+    // this.getIngredients();
   }
 
   getIngredients() {

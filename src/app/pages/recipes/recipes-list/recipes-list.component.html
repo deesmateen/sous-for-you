@@ -1,0 +1,11 @@
+<div>
+  <div>
+    <a class="btn btn-success">New Recipe</a>
+  </div>
+
+  <div>
+    <ul>
+      <recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (click)="onSelected(recipe)"></recipe-item>
+    </ul>
+  </div>
+</div>

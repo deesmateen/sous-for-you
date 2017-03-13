@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ConstantsService {
 
-  baseUrl = 'httpss://api2.bigoven.com';
+  baseUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com';
 
   constructor() {
   }
