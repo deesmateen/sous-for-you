@@ -41,16 +41,27 @@ export class HttpService {
     .catch(this.handleError);
   }
 
-  getRecipe() {
+  getRecipeData(recipe) {
     let headers = new Headers();
     // let params: URLSearchParams = new URLSearchParams();
     headers.set("X-Mashape-Key", 'e8QahdDUqkmshAogBHfy8vrxKWKPp1o5oxajsnesgxZMzE3I3R');
     headers.set("Accept", "application/json");
 
-    return this.http.get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/autocomplete?number=10&query=chicken', {headers,})
+    return this.http.get(this.baseUrl + '/recipes/autocomplete?number=10&query=' + recipe, {headers,})
 
     .map((response: Response) => response.json())
     .catch(this.handleError);
+  }
+
+  getRecipeSearch(search) {
+    let headers = new Headers();
+    headers.set("X-Mashape-Key", 'e8QahdDUqkmshAogBHfy8vrxKWKPp1o5oxajsnesgxZMzE3I3R');
+    headers.set("Accept", "application/json");
+
+    return this.http.get(this.baseUrl + '/recipes/search?diet=vegetarian&excludeIngredients=coconut&instructionsRequired=false&intolerances=egg%2C+gluten&limitLicense=false&number=10&offset=0&query=' + search + '&type=main+course', {headers,})
+
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
   }
 
   getIngredientsData() {

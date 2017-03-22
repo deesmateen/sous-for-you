@@ -1,18 +1,20 @@
-<div>
-  <div class="recipesContainer">
+<div class="container">
+  <div class="row">
+    <div class="recipesContainer col-lg-12 ">
 
-    <div>
-      <recipes-list (recipeSelected)="selectedRecipe = $event"></recipes-list>
-    </div>
-
-    <div>
       <div>
-        <h3>Recipe List</h3>
-        <!--<app-recipes ></app-recipes>-->
+        <!--<recipes-list (recipeSelected)="selectedRecipe = $event"></recipes-list>-->
+          <recipes-list></recipes-list>
       </div>
+
       <div>
-        <h3>Recipe Detail</h3>
-        <recipe-detail [selectedRecipe]="selectedRecipe "></recipe-detail>
+        <div>
+          <h4>Recipe List</h4>
+        </div>
+        <div>
+          <h4>Recipe Detail</h4>
+          <recipe-detail [selectedRecipe]="selectedRecipe "></recipe-detail>
+        </div>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { Recipe } from '../../recipes/recipe'
+import { HttpService } from '../../../shared/services/http.service';
 
 @Component({
   selector: 'recipes-list',
@@ -9,21 +10,43 @@ import { Recipe } from '../../recipes/recipe'
 })
 export class RecipesListComponent implements OnInit {
 
-  private recipes: Recipe[] = [
-    new Recipe ('Meatloaf', 'yummy', []),
-    new Recipe ('Food', 'gross', [])
-  ];
+  public searchString: string;
+  public recipes: Array<any>;
+  public recipeSearchString: string;
+  public newRecipes: Array<any>;
 
-  @Output() recipeSelected = new EventEmitter<Recipe>();
+  selectedRecipe: Recipe;
+
+  constructor(
+    private httpService: HttpService
+  ) { }
+
+  ngOnInit() {}
 
 
-  constructor() { }
-
-  ngOnInit() {
+  newRecipe() {
+    this.httpService.getRecipeData(this.searchString)
+      .subscribe(
+        (data: any) => {
+          console.log('New Data', data);
+          this.recipes = data;
+        },
+        error => {
+          console.log('Error:: Cannot Get Recipe', error);
+        }
+      )
   }
 
-  onSelected(recipe: Recipe) {
-    this.recipeSelected.emit(recipe)
+  recipeSearch() {
+    this.httpService.getRecipeSearch(this.recipeSearchString)
+      .subscribe(
+        (data: any) => {
+          console.log('Recipe Search', data.results);
+          this.newRecipes = data.results;
+        },
+        error => {
+          console.log('Error:: Cannot get recipes', error);
+        }
+      )
   }
-
 }

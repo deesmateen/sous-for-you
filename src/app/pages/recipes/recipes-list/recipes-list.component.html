@@ -1,11 +1,37 @@
-<div>
-  <div>
-    <a class="btn btn-success">New Recipe</a>
-  </div>
+<div class="recContainer">
+  <!--<div>-->
+    <!--<h4>Recipes detail</h4>-->
+    <!--<div>-->
+      <!--<div>-->
+        <!--<input type="text" [(ngModel)]="searchString">-->
+        <!--<button class="btn btn-success" (click)="newRecipe()">Get Recipe</button>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<ul>-->
+          <!--<li *ngFor="let recipe of recipes">-->
+            <!--<h4>{{recipe.id}}</h4>-->
+            <!--<h5>{{recipe.title}}</h5>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <div>
-    <ul>
-      <recipe-item *ngFor="let recipe of recipes" [recipe]="recipe" (click)="onSelected(recipe)"></recipe-item>
-    </ul>
+    <div>
+      <h4>Recipes</h4>
+      <div>
+        <input type="text" [(ngModel)]="recipeSearchString">
+        <button class="btn btn-success" (click)="recipeSearch()">Get Recipes</button>
+      </div>
+    </div>
+    <div>
+      <ul>
+        <li *ngFor="let search of newRecipes">
+          <h5>{{search.id}}</h5>
+          {{search.image}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
